@@ -2,7 +2,7 @@
 <suite name="Suite" parallel="none">
     <test name="cucumber">
         <classes>
-            <class name="TestRunner.XYZBankTestRunner"/>
+            <class name="TestRunner.XYZBank.XYZBankTestRunner"/>
         </classes>
     </test>
 

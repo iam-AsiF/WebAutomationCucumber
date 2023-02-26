@@ -8,18 +8,10 @@
             example - ./gradlew webTest -DType=parallelTest
 
 
+ArrayList:
 
+mouseHover:
 
+Dropdown:
 
-            #  Scenario: Manager opens an account by linking newly created customer
-            #    Given Manager clicks on the open account tab
-            #    When Manager selects customer name
-            #    And selects currency type
-            #    And clicks on process button
-            #    Then Manager closes confirmation alert for account creation
-            #
-            #
-            #  Scenario: Manager deletes newly created customer
-            #    Given Manager clicks on the customers tab
-            #    When Manager finds newly created user
-            #    Then Manager deletes that user
+add variable to xpath:

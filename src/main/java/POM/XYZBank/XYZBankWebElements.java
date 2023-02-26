@@ -1,19 +1,21 @@
-package POM;
+package POM.XYZBank;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 
 public class XYZBankWebElements {
 
-    protected WebDriver driver;
+    static WebDriver driver;
 
     public XYZBankWebElements(WebDriver driver) {
-        this.driver = driver;
+        XYZBankWebElements.driver = driver;
     }
 
     public void BankManagerLoginOption() throws InterruptedException {
@@ -40,17 +42,21 @@ public class XYZBankWebElements {
         Thread.sleep(2000);
     }
 
-    public void confirmationMsg1() {
+    public void confirmationMsg1() throws InterruptedException {
         // handle alert contained 'ok' button - getting text as well
         String message = driver.switchTo().alert().getText();
         System.out.println(message);
         driver.switchTo().alert().accept();
+        Thread.sleep(3000);
     }
 
 
     // Manger opens account with the newly created customer
     public void openAccountTab() {
-        driver.findElement(By.xpath("(//div[@class=\"ng-scope\"]//descendant::button)[4]")).click();
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class=\"ng-scope\"]//descendant::button)[4]")));
+        By account = By.xpath("(//div[@class=\"ng-scope\"]//descendant::button)[4]");
+        driver.findElement(account).click();
     }
 
     public void selectCustomer() throws InterruptedException {
@@ -116,7 +122,8 @@ public class XYZBankWebElements {
 
     // Manger deletes the newly created customer
     public void customersTab() {
-        driver.findElement(By.xpath("(//div[@class=\"ng-scope\"]//descendant::button)[5]")).click();
+        By customer = By.xpath("(//div[@class=\"ng-scope\"]//descendant::button)[5]");
+        driver.findElement(customer).click();
     }
 
     public void searchCustomer() throws InterruptedException {
