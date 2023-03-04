@@ -5,15 +5,15 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
+
+import static WebStepDefinition.XYZBank.BML1AddCustomerStepDef.driver;
 
 public class BML2AddAccountStepDef {
-    static WebDriver driver;
     XYZBankWebElements xyz;
 
     @Given("Manager clicks on open account tab")
     public void managerClicksOnOpenAccountTab() {
-        XYZBankWebElements xyz = new XYZBankWebElements(driver);
+        xyz = new XYZBankWebElements(driver);
         xyz.openAccountTab();
     }
 

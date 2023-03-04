@@ -1,17 +1,19 @@
 package WebStepDefinition.XYZBank;
 
+import Core.Helper;
 import POM.XYZBank.XYZBankWebElements;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
+
+import static WebStepDefinition.XYZBank.BML1AddCustomerStepDef.driver;
 
 public class BML3DeleteCustomerStepDefinition {
-    static WebDriver driver;
     XYZBankWebElements xyz;
+
     @Given("manager clicks on the customers tab")
-    public void managerClicksOnTheCustomersTab() {
-        XYZBankWebElements xyz = new XYZBankWebElements(driver);
+    public void managerClicksOnTheCustomersTab() throws InterruptedException {
+        xyz = new XYZBankWebElements(driver);
         xyz.customersTab();
     }
 
@@ -23,5 +25,7 @@ public class BML3DeleteCustomerStepDefinition {
     @Then("manager deletes the customer")
     public void managerDeletesTheCustomer() throws InterruptedException {
         xyz.deleteCustomer();
+        Thread.sleep(2000);
+        driver.quit();
     }
 }

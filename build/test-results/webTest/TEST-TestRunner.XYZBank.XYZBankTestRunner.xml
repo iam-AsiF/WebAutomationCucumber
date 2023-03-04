@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestRunner.XYZBank.XYZBankTestRunner" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-03-04T22:14:49" hostname="ASIF" time="38.752">
+  <properties/>
+  <testcase name="runScenario[0](&quot;Manager adds a customer&quot;, &quot;Optional[Bank Manager Login (addCustomer)]&quot;)" classname="TestRunner.XYZBank.XYZBankTestRunner" time="19.607"/>
+  <testcase name="runScenario[1](&quot;Manager opens an account by linking newly created customer&quot;, &quot;Optional[Bank Manager Login (openAccount)]&quot;)" classname="TestRunner.XYZBank.XYZBankTestRunner" time="9.144"/>
+  <testcase name="runScenario[2](&quot;Manager deletes the new customer&quot;, &quot;Optional[Bank Manager Login (deleteCustomer)]&quot;)" classname="TestRunner.XYZBank.XYZBankTestRunner" time="9.996"/>
+  <system-out><![CDATA[
+@addCustomer
+Scenario Outline: Manager adds a customer                         # src/test/resources/Features/XYZBank/bml1AddCustomer.feature:14
+  Given Manager lands on the XYZ bank home page                   # WebStepDefinition.XYZBank.BML1AddCustomerStepDef.managerLandsOnTheXYZBankHomePage()
+  When manager clicks on bank manager login option                # WebStepDefinition.XYZBank.BML1AddCustomerStepDef.managerClicksOnBankManagerLoginOption()
+  And clicks on add customer tab                                  # WebStepDefinition.XYZBank.BML1AddCustomerStepDef.clicksOnAddCustomerTab()
+data verification=> first name: john, last Name: test, post code: 1111
+  And sends customer 'john' and 'test' and '1111'                 # WebStepDefinition.XYZBank.BML1AddCustomerStepDef.sendsCustomerFirstNameAndLastNameAndPostCode(java.lang.String,java.lang.String,java.lang.String)
+  And clicks on add customer button                               # WebStepDefinition.XYZBank.BML1AddCustomerStepDef.clicksOnAddCustomerButton()
+Customer added successfully with customer id :6
+  Then manager closes confirmation alert for newly added customer # WebStepDefinition.XYZBank.BML1AddCustomerStepDef.managerClosesConfirmationAlertForNewlyAddedCustomer()
+
+@openAccount
+Scenario: Manager opens an account by linking newly created customer # src/test/resources/Features/XYZBank/bml2OpenAccount.feature:4
+  Given Manager clicks on open account tab                           # WebStepDefinition.XYZBank.BML2AddAccountStepDef.managerClicksOnOpenAccountTab()
+7
+final xpath: [[ChromeDriver: chrome on WINDOWS (c88ad2d0a7a179dfb3ff1f497decb9ab)] -> xpath: ((//div[@class="ng-scope"]//descendant::select)[1]//option)[7]]
+  When manager selects customer name                                 # WebStepDefinition.XYZBank.BML2AddAccountStepDef.managerSelectsCustomerName()
+  And selects currency type                                          # WebStepDefinition.XYZBank.BML2AddAccountStepDef.selectsCurrencyType()
+  And clicks on process button                                       # WebStepDefinition.XYZBank.BML2AddAccountStepDef.clicksOnProcessButton()
+Account created successfully with account Number :1016
+  Then manager closes confirmation alert for account creation        # WebStepDefinition.XYZBank.BML2AddAccountStepDef.managerClosesConfirmationAlertForAccountCreation()
+
+@deleteCustomer
+Scenario: Manager deletes the new customer           # src/test/resources/Features/XYZBank/bml3DeleteCustomer.feature:4
+  Given manager clicks on the customers tab          # WebStepDefinition.XYZBank.BML3DeleteCustomerStepDefinition.managerClicksOnTheCustomersTab()
+  When manager searches for the newly added customer # WebStepDefinition.XYZBank.BML3DeleteCustomerStepDefinition.managerSearchesForTheNewlyAddedCustomer()
+  Then manager deletes the customer                  # WebStepDefinition.XYZBank.BML3DeleteCustomerStepDefinition.managerDeletesTheCustomer()
+]]></system-out>
+  <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Starting ChromeDriver 110.0.5481.77 (65ed616c6e8ee3fe0ad64fe83796c020644d42af-refs/branch-heads/5481@{#839}) on port 51833
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+[1677968094.862][WARNING]: virtual void DevToolsClientImpl::AddListener(DevToolsEventListener *) subscribing a listener to the already connected DevToolsClient. Connection notification will not arrive.
+Mar 05, 2023 4:14:55 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+Mar 05, 2023 4:14:56 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 110, so returning the closest version found: a no-op implementation
+Mar 05, 2023 4:14:56 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+INFO: Unable to find CDP implementation matching 110.
+Mar 05, 2023 4:14:56 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$3
+WARNING: Unable to find version of CDP to use for . You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.1.2` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+]]></system-err>
+</testsuite>

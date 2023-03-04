@@ -5,14 +5,12 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 
 public class XYZBankWebElements {
 
-    static WebDriver driver;
+    protected static WebDriver driver;
 
     public XYZBankWebElements(WebDriver driver) {
         XYZBankWebElements.driver = driver;
@@ -53,8 +51,6 @@ public class XYZBankWebElements {
 
     // Manger opens account with the newly created customer
     public void openAccountTab() {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class=\"ng-scope\"]//descendant::button)[4]")));
         By account = By.xpath("(//div[@class=\"ng-scope\"]//descendant::button)[4]");
         driver.findElement(account).click();
     }
@@ -78,9 +74,11 @@ public class XYZBankWebElements {
         // or
 
         // open dropdown
+        Thread.sleep(2000);
         WebElement dropdownCustomer = driver.findElement(By.xpath("(//div[@class=\"ng-scope\"]//descendant::select)[1]"));
         Actions actions = new Actions(driver);
         actions.moveToElement(dropdownCustomer).perform();
+        actions.click().perform();
         actions.click().perform();
         // put all elements in a list - all the options - with ArrayList
         ArrayList<WebElement> list = new ArrayList<>(driver.findElements(By.xpath("((//div[@class=\"ng-scope\"]//descendant::select)[1]//option)")));
@@ -121,13 +119,15 @@ public class XYZBankWebElements {
 
 
     // Manger deletes the newly created customer
-    public void customersTab() {
+    public void customersTab() throws InterruptedException {
         By customer = By.xpath("(//div[@class=\"ng-scope\"]//descendant::button)[5]");
         driver.findElement(customer).click();
+        Thread.sleep(2000);
     }
 
     public void searchCustomer() throws InterruptedException {
-        driver.findElement(By.xpath("(//input[@placeholder=\"Search Customer\"])")).sendKeys("john");
+        By searchName = By.xpath("(//input[@placeholder=\"Search Customer\"])");
+        driver.findElement(searchName).sendKeys("john");
         Thread.sleep(1500);
     }
 

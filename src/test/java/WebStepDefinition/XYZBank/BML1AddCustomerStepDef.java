@@ -9,14 +9,14 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 
 public class BML1AddCustomerStepDef {
-    static WebDriver driver;
+    public static WebDriver driver;
 
     XYZBankWebElements xyz;
 
     @Given("Manager lands on the XYZ bank home page")
     public void managerLandsOnTheXYZBankHomePage() {
         Helper hlp = new Helper();
-        driver = hlp.chromeLaunch();
+        driver = hlp.chromeLaunch(); // this driver = elementDriver
         driver.manage().window().maximize();
         driver = hlp.webUrl("https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login");
     }
