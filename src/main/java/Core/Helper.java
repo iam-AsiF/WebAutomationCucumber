@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Helper {
 
-    protected WebDriver driver;
+    static WebDriver driver;
 
     public WebDriver chromeLaunch() {
 

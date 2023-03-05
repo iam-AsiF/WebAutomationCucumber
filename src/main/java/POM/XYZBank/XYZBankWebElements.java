@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class XYZBankWebElements {
 
-    protected static WebDriver driver;
+    static WebDriver driver;
 
     public XYZBankWebElements(WebDriver driver) {
         XYZBankWebElements.driver = driver;
