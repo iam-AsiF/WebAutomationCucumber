@@ -9,7 +9,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 
 public class BML1AddCustomerStepDef {
-    public static WebDriver driver;
+    static WebDriver driver;
 
     XYZBankWebElements xyz;
 

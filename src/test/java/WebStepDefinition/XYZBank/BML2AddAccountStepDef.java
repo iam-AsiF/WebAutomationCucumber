@@ -9,11 +9,10 @@ import io.cucumber.java.en.When;
 import static WebStepDefinition.XYZBank.BML1AddCustomerStepDef.driver;
 
 public class BML2AddAccountStepDef {
-    XYZBankWebElements xyz;
+    XYZBankWebElements xyz = new XYZBankWebElements(driver);
 
     @Given("Manager clicks on open account tab")
     public void managerClicksOnOpenAccountTab() {
-        xyz = new XYZBankWebElements(driver);
         xyz.openAccountTab();
     }
 

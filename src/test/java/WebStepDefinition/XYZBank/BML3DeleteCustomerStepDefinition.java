@@ -9,11 +9,10 @@ import io.cucumber.java.en.When;
 import static WebStepDefinition.XYZBank.BML1AddCustomerStepDef.driver;
 
 public class BML3DeleteCustomerStepDefinition {
-    XYZBankWebElements xyz;
+    XYZBankWebElements xyz = new XYZBankWebElements(driver);
 
     @Given("manager clicks on the customers tab")
     public void managerClicksOnTheCustomersTab() throws InterruptedException {
-        xyz = new XYZBankWebElements(driver);
         xyz.customersTab();
     }
 
@@ -26,6 +25,7 @@ public class BML3DeleteCustomerStepDefinition {
     public void managerDeletesTheCustomer() throws InterruptedException {
         xyz.deleteCustomer();
         Thread.sleep(2000);
-        driver.quit();
+        Helper hlp = new Helper();
+        driver = hlp.closeBrowser();
     }
 }
