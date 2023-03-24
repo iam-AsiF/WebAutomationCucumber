@@ -35,9 +35,10 @@ public class Helper {
         options.setExperimentalOption("prefs", prefs);
         options.addArguments("--remote-allow-origins=*");
 
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--headless");
+        // for CI/CD
+//        options.addArguments("--no-sandbox");
+//        options.addArguments("--disable-dev-shm-usage");
+//        options.addArguments("--headless");
 
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(options);
