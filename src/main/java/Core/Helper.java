@@ -2,7 +2,6 @@ package Core;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -34,6 +33,11 @@ public class Helper {
 
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("prefs", prefs);
+        options.addArguments("--remote-allow-origins=*");
+
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless");
 
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(options);
@@ -58,13 +62,7 @@ public class Helper {
         return driver;
     }
 
-//    public WebDriver webURL(String URL){
-//        chromeLaunch();
-//        driver.get(URL);
-//        driver.manage().window().maximize();
-//        return driver;
-//    }
-        public WebDriver webUrl(String  URL){
+    public WebDriver webUrl(String URL) {
         driver.get(URL);
         return driver;
     }
